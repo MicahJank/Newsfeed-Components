@@ -11,29 +11,27 @@ let menuItems = [
 
 /* 
 
-  Step 1: Write a function that will create a menu component as seen below:
 
-  <div class="menu">
-    <ul>
-      {each menu item as a list item}
-    </ul>
-  </div>
 
-  Pass the function an array as it's only argument.
 
-  Step 2: Iterate over the array creating a list item <li> element for each item in the array. 
-  Add those items to the <ul>
 
-  Step 3: Using a DOM selector, select the menu button currently on the DOM.
   
-  Step 4: add a click handler to the menu button, when clicked it should toggle the class 'menu--open' on the menu itself
 
-  Step 5: return the menu component.
 
-  Step 6: add the menu component to the DOM.
+
   
 */
 
+
+// Step 1: Write a function that will create a menu component as seen below:
+
+// <div class="menu">
+//   <ul>
+//     {each menu item as a list item}
+//   </ul>
+// </div>
+
+// Pass the function an array as it's only argument.
 const createMenu = menuArray => {
   const menuDiv = document.createElement('div');
   menuDiv.classList.add('menu');
@@ -41,6 +39,8 @@ const createMenu = menuArray => {
   const menuUL = document.createElement('ul');
   menuDiv.appendChild(menuUL);
 
+  //   Step 2: Iterate over the array creating a list item <li> element for each item in the array. 
+  //   Add those items to the <ul>
   // loop through the menu items array
   menuArray.forEach(item => {
     const link = document.createElement('li'); // creating a li element for each of the menu items in the array
@@ -48,8 +48,11 @@ const createMenu = menuArray => {
     menuUL.appendChild(link); // appending the created link to the ul item created above.
   });
 
+  // Step 3: Using a DOM selector, select the menu button currently on the DOM.
   const menuButton = document.querySelector('.menu-button');
   menuButton.classList.add('menu-button')
+
+  //   Step 4: add a click handler to the menu button, when clicked it should toggle the class 'menu--open' on the menu itself
   menuButton.addEventListener('click', () => {
     menuDiv.classList.toggle('menu--open');
     menuAnimation();
@@ -61,9 +64,10 @@ const createMenu = menuArray => {
   };
   
 
+  // Step 5: return the menu component.
   return menuDiv;
 };
 
-
+//   Step 6: add the menu component to the DOM.
 const body = document.querySelector('body');
 body.appendChild(createMenu(menuItems));

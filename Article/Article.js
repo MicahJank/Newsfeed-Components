@@ -86,6 +86,7 @@ const data = [
           Hodor hodor, HODOR hodor, hodor hodor?! Hodor! Hodor hodor, HODOR hodor, hodor hodor, hodor, hodor hodor. Hodor, hodor.
           Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.`
   },
+  // Step 5: Add a new article to the array. Make sure it is in the same format as the others. Refresh the page to see the new artible
   {
     title: 'Micahs Article',
     date: 'Jul 16th, 2019',
@@ -97,7 +98,8 @@ const data = [
   }
 ];
 
-/* Step 1: Create a function that creates a component. You will want your component to look like the template below: 
+/*
+ Step 1: Create a function that creates a component. You will want your component to look like the template below: 
   
   <div class="article">
     <h2>{title of the article}</h2>
@@ -111,17 +113,7 @@ const data = [
   Hint: You will need to use createElement more than once here!
 
   Your function should take either an object as it's one argument, or 5 separate arguments mapping to each peice of the data object above.
-
-  Step 2: Add an event listener to the expandButton span. This event listener should toggle the class 'article-open' on the 'article' div.
-
-  Step 3: return the entire component.
-
-  Step 4: Map over the data, creating a component for each oject and add each component to the DOM as children of the 'articles' div.
-
-  Step 5: Add a new article to the array. Make sure it is in the same format as the others. Refresh the page to see the new artible
-
 */
-
 const createArticles = (dataObj) => {
   // articleDiv is the div that will store all the article information such as date title and content
   const articleDiv = document.createElement('div');
@@ -160,6 +152,7 @@ const createArticles = (dataObj) => {
   expandButton.textContent = 'Click to expand'; // since expand button does not have a corresponding data prop i can just fill the text content manually with a string
   articleDiv.appendChild(expandButton);
   
+  // Step 2: Add an event listener to the expandButton span. This event listener should toggle the class 'article-open' on the 'article' div.
   // the button needs an event listener so that when the article is created it will have the ability to expand its content
   expandButton.addEventListener('click', () => {
     articleDiv.classList.toggle('article-open');
@@ -180,10 +173,12 @@ const createArticles = (dataObj) => {
     }
   };
   
+  // Step 3: return the entire component.
   return articleDiv;
 };
 
 
+//  Step 4: Map over the data, creating a component for each oject and add each component to the DOM as children of the 'articles' div.
 // map through the data array and each object inside the array will then be passed into the createArticles function
 // since createArticles returns the component i can save the component in a variable and then after
 // query selecting for the 'articles' div in the HTML i can simply append that article to it.
